@@ -15,17 +15,18 @@ class AddNote extends StatelessWidget {
       backgroundColor: Color.fromARGB(255, 18, 18, 18),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        actions: [
-          TextButton(
-            onPressed: () {
-              ref.add({
-                'title': title.text,
-                'content': content.text
-              }).whenComplete(() => Navigator.pop(context));
-            },
-            child: Text('Save'),
-          )
-        ],
+        // actions: [
+        //   TextButton(
+        //     onPressed: () {
+        //       ref.add({
+        //         'title': title.text,
+        //         'content': content.text,
+        //         'created': DateTime.now()
+        //       }).whenComplete(() => Navigator.pop(context));
+        //     },
+        //     child: Text('Save'),
+        //   )
+        // ],
       ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
@@ -38,11 +39,11 @@ class AddNote extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.all(10),
                 child: TextField(
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white, fontSize: 24),
                   controller: title,
                   decoration: InputDecoration(
-                      hintText: 'Title',
-                      hintStyle: TextStyle(color: Colors.grey)),
+                      hintText: 'Judul',
+                      hintStyle: TextStyle(color: Colors.grey, fontSize: 24)),
                 ),
               ),
             ),
@@ -62,8 +63,8 @@ class AddNote extends StatelessWidget {
                     maxLines: null,
                     expands: true,
                     decoration: InputDecoration(
-                        hintText: 'Content',
-                        hintStyle: TextStyle(color: Colors.grey)),
+                        hintText: 'Isi',
+                        hintStyle: TextStyle(color: Colors.grey, fontSize: 18)),
                   ),
                 ),
               ),
@@ -74,8 +75,11 @@ class AddNote extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.save),
         onPressed: () {
-          ref.add({'title': title.text, 'content': content.text}).whenComplete(
-              () => Navigator.pop(context));
+          ref.add({
+            'title': title.text,
+            'content': content.text,
+            'created': DateTime.now()
+          }).whenComplete(() => Navigator.pop(context));
         },
       ),
     );
